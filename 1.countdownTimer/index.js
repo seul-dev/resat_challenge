@@ -1,5 +1,4 @@
 let intervalId;
-let initialTime;
 let timeLeft;
 let isPaused = false;
 
