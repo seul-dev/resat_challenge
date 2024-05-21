@@ -12,9 +12,6 @@ const secondsInput = document.getElementById('seconds');
 const timerDisplay = document.getElementById('timer-display');
 const inputArea = document.getElementById('input-area');
 
-startButton.disabled = true;
-stopButton.disabled = true;
-resetButton.disabled = true;
 inputArea.style.display = 'block';
 timerDisplay.textContent = '00:00:00';
 
@@ -36,24 +33,27 @@ function handleInputChange() {
 }
 
 function updateTime() {
-  timeLeft--;
-  let hoursLeft = Math.floor(timeLeft / 3600);
-  let minutesLeft = Math.floor((timeLeft % 3600) / 60);
-  let secondsLeft = timeLeft % 60;
+  if (timeLeft > 0) {
+    timeLeft--;
+    let hoursLeft = Math.floor(timeLeft / 3600);
+    let minutesLeft = Math.floor((timeLeft % 3600) / 60);
+    let secondsLeft = timeLeft % 60;
 
-  updateTimerDisplay(hoursLeft, minutesLeft, secondsLeft);
+    updateTimerDisplay(hoursLeft, minutesLeft, secondsLeft);
+  }
 
   if (timeLeft <= 0) {
     clearInterval(intervalId);
     intervalId = null;
     timerDisplay.textContent = "Time's up!";
-    startButton.disabled = false;
+    startButton.disabled = true;
     stopButton.disabled = true;
     resetButton.disabled = true;
     hoursInput.value = '';
     minutesInput.value = '';
     secondsInput.value = '';
     inputArea.style.display = 'block';
+    isPaused = false;
   }
 }
 
@@ -85,7 +85,7 @@ function stopTimer() {
 function resetTimer() {
   clearInterval(intervalId);
   timeLeft = 0;
-  isPaused = true;
+  isPaused = false;
   updateTimerDisplay(0, 0, 0);
   hoursInput.value = '';
   minutesInput.value = '';
