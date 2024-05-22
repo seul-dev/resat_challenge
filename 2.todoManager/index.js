@@ -1,5 +1,7 @@
 import TodoInputForm from './TodoInputForm.js';
 import TodoList from './TodoList.js';
+import TodoFilter from './TodoFilter.js';
+import { Filter } from './constants.js';
 
 function App({ $target, initialState }) {
   this.state = initialState;
@@ -7,8 +9,6 @@ function App({ $target, initialState }) {
   this.setState = (nextState) => {
     this.state = nextState;
     todoList.setState(this.state);
-
-    // this.render();
   };
 
   const todoInputForm = new TodoInputForm({
@@ -25,6 +25,22 @@ function App({ $target, initialState }) {
         },
       ];
       this.setState(nextState);
+    },
+  });
+
+  const todoFilter = new TodoFilter({
+    $target,
+    initialState: 'all',
+    onChange: (filterName) => {
+      if (filterName === 'all') {
+        todoList.setState(this.state);
+      } else if (filterName === 'active') {
+        const nextState = this.state.filter((todo) => !todo.isCompleted);
+        todoList.setState(nextState);
+      } else if (filterName === 'completed') {
+        const nextState = this.state.filter((todo) => todo.isCompleted);
+        todoList.setState(nextState);
+      }
     },
   });
 

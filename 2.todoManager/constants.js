@@ -4,3 +4,9 @@ export const PRIORITY = {
   high: '높음',
   'very-high': '아주 높음',
 };
+
+export const Filter = {
+  all: '전체',
+  active: '진행중',
+  completed: '완료',
+};
