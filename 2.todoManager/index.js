@@ -32,15 +32,8 @@ function App({ $target, initialState }) {
     $target,
     initialState: 'all',
     onChange: (filterName) => {
-      if (filterName === 'all') {
-        todoList.setState(this.state);
-      } else if (filterName === 'active') {
-        const nextState = this.state.filter((todo) => !todo.isCompleted);
-        todoList.setState(nextState);
-      } else if (filterName === 'completed') {
-        const nextState = this.state.filter((todo) => todo.isCompleted);
-        todoList.setState(nextState);
-      }
+      const newState = Filter[filterName].filterFunc(this.state);
+      todoList.setState(newState);
     },
   });
 

@@ -9,11 +9,11 @@ export default function TodoFilter({ $target, initialState, onChange }) {
   this.render = () => {
     this.$element.innerHTML = Object.entries(Filter)
       .map(
-        ([value, label]) =>
-          `<button data-filter-name='${value}' class='${
-            this.state === value ? 'selected' : ''
+        ([filterKey, filter]) =>
+          `<button data-filter-name='${filterKey}' class='${
+            this.state === filterKey ? 'selected' : ''
           }'>
-            ${label}
+            ${filter.label}
           </button>`
       )
       .join('');

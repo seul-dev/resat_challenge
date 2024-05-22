@@ -6,7 +6,16 @@ export const PRIORITY = {
 };
 
 export const Filter = {
-  all: '전체',
-  active: '진행중',
-  completed: '완료',
+  all: {
+    label: '전체',
+    filterFunc: (todos) => todos,
+  },
+  active: {
+    label: '진행중',
+    filterFunc: (todos) => todos.filter((todo) => !todo.isCompleted),
+  },
+  completed: {
+    label: '완료',
+    filterFunc: (todos) => todos.filter((todo) => todo.isCompleted),
+  },
 };
