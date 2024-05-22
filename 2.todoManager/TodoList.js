@@ -14,7 +14,9 @@ export default function TodoList({ $target, initialState, onToggle, onEdit }) {
           `<li data-index='${id}' class='todo-item'>
             <input type='checkbox' ${isCompleted ? 'checked' : ''} >
             <span class='todo-text'>${text}</span>
-            <span data-priority='${priority}'>${PRIORITY[priority]}</span>
+            <span class='todo-priority' data-priority='${priority}'>${
+            PRIORITY[priority]
+          }</span>
           </li>`
       )
       .join('');

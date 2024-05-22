@@ -110,11 +110,29 @@ li {
   border-bottom: 1px solid #ddd;
 }
 
-.todo-list .todo-item .todo-text {
+.todo-text {
   flex-grow: 1;
   margin-right: 1rem;
   margin-left: 1rem;
 }
 .todo-priority {
   margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.todo-priority[data-priority='low'] {
+  background-color: lightyellow;
+}
+
+.todo-priority[data-priority='medium'] {
+  background-color: lightgreen;
+}
+
+.todo-priority[data-priority='high'] {
+  background-color: orange;
+}
+
+.todo-priority[data-priority='very-high'] {
+  background-color: lightcoral;
 }
