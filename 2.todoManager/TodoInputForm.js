@@ -2,14 +2,15 @@ import { PRIORITY } from './constants.js';
 
 export default function TodoInputForm({ $target, onSubmit }) {
   this.$element = document.createElement('div');
-  this.$element.className = 'todo-form';
 
   this.render = () => {
     this.$element.innerHTML = `
-    <form>
-      <input type="text" id='todo-text' placeholder="할 일을 작성해주세요.">
-      <button type='submit'>추가</button>
-      <div class="priority">
+    <form id='todo-form'>
+      <div>
+        <input type="text" id='todo-text' placeholder="할 일을 작성해주세요.">
+        <button type='submit' id='todo-form-button'>추가</button>
+      </div>
+      <div id="todo-priority">
          ${Object.entries(PRIORITY)
            .map(
              ([value, label], index) =>

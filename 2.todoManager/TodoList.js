@@ -2,6 +2,7 @@ import { PRIORITY } from './constants.js';
 
 export default function TodoList({ $target, initialState, onToggle, onEdit }) {
   this.$element = document.createElement('ul');
+  this.$element.className = 'todo-list';
   $target.appendChild(this.$element);
 
   this.state = initialState;
@@ -10,10 +11,10 @@ export default function TodoList({ $target, initialState, onToggle, onEdit }) {
     this.$element.innerHTML = this.state
       .map(
         ({ text, priority, id, isCompleted }) =>
-          `<li data-index='${id}'>
+          `<li data-index='${id}' class='todo-item'>
             <input type='checkbox' ${isCompleted ? 'checked' : ''} >
-            ${text}
-            <span>${PRIORITY[priority]}</span>
+            <span class='todo-text'>${text}</span>
+            <span data-priority='${priority}'>${PRIORITY[priority]}</span>
           </li>`
       )
       .join('');
