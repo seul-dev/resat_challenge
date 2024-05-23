@@ -17,8 +17,8 @@ export default function Calendar({
   const DAY_OF_WEEK = ['일', '월', '화', '수', '목', '금', '토'];
 
   this.render = () => {
-    const monthStart = new Date(this.state.year, this.state.month);
-    const monthEnd = new Date(this.state.year, this.state.month + 1, 0);
+    const monthStart = new Date(this.state.year, this.state.month - 1);
+    const monthEnd = new Date(this.state.year, this.state.month, 0);
     const startDay = monthStart.getDay();
     const endDay = monthEnd.getDate();
 
