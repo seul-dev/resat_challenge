@@ -22,7 +22,7 @@ export default function Calendar({
     const startDay = monthStart.getDay();
     const endDay = monthEnd.getDate();
 
-    let html = `<div id='calendar-head'><div id="prev">◀︎</div><div>${this.state.year}월 ${this.state.month}일</div><div id="next">►</div></div><table><tr>`;
+    let html = `<div id='calendar-head'><div id="prev">◀︎</div><div>${this.state.year}년 ${this.state.month}월</div><div id="next">►</div></div><table><tr>`;
 
     html += `${DAY_OF_WEEK.map((day) => `<th>${day}</th>`).join('')}</tr><tr>`;
 

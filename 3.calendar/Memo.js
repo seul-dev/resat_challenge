@@ -12,6 +12,7 @@ export default function Memo({ $target, initialState, onEdit }) {
     e.preventDefault();
     const memo = e.target.querySelector('textarea').value;
     onEdit(memo);
+    this.$element.close();
   });
 
   this.$element.addEventListener('click', (e) => {
@@ -23,9 +24,10 @@ export default function Memo({ $target, initialState, onEdit }) {
   this.render = () => {
     this.$element.innerHTML = `
       <form>
+        <h2>${this.state.date}</h2>
         <textarea>${this.state.memo || ''}</textarea>
-        <button type="submit">Save</button>
         <button type="button" class="close">Close</button>
+        <button type="submit">Save</button>
       </form>
     `;
 
